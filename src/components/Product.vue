@@ -18,7 +18,7 @@
         <div class="product-name fs-5">{{ product.name }}</div>
 
         <div class="row">
-          <div class="col fw-bold fs-5 align-self-end">
+          <div class="col fw-bold fs-5 align-self-end" id="prod-price">
             ${{ product.price }}
           </div>
           <div class="col text-end align-self-end">{{ product.weight }}Kg</div>
