@@ -1,13 +1,18 @@
 <template>
   <div class="col-6 col-lg-3 col-md-4">
-    <div class="card d-flex flex-column align-items-center mb-2 c-shadow">
-      <i
-        class="bi bi-plus-circle fs-2 w-100 text-end px-2 icon"
-        @click="sendItem(product)"
-      ></i>
+    <div class="card d-flex flex-column align-items-center mb-2 shadow">
+      <div class="d-flex justify-content-end w-100 p-2">
+        <button
+          type="button"
+          class="btn btn-primary"
+          @click="sendItem(product)"
+        >
+          +
+        </button>
+      </div>
 
       <div class="card-img d-flex justify-content-center">
-        <img :src="product.image" :alt="product.name" />
+        <img :src="product.image" :alt="product.name" class="w-75" />
       </div>
       <div class="card-body w-100">
         <div class="product-name fs-5">{{ product.name }}</div>
@@ -36,23 +41,4 @@ export default {
 };
 </script>
 
-<style scoped>
-img {
-  width: 80%;
-  height: auto;
-}
-
-.icon {
-  cursor: pointer;
-  color: #969696;
-}
-
-.icon:hover {
-  color: #2c5858;
-}
-
-.c-shadow {
-  -webkit-box-shadow: 0px 0px 5px 0px #2e70ff;
-  box-shadow: 0px 0px 5px 0px #2e70ff;
-}
-</style>
+<style scoped></style>

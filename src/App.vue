@@ -103,10 +103,13 @@ export default {
 </script>
 
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
-
 body {
   padding: 1em;
-  font-family: "Inter", sans-serif;
+}
+
+@media screen and (max-width: 500px) {
+  body {
+    padding: 1em 0.5em;
+  }
 }
 </style>

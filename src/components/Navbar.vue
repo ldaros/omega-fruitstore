@@ -1,13 +1,19 @@
 <template>
   <div class="container">
     <div class="row">
-      <a id="icon1" class="col">
-        <i class="bi bi-list fs-1 icon"></i>
-      </a>
+      <div class="col">
+        <button type="button" class="btn btn-outline-success fs-3">📖</button>
+      </div>
 
-      <a id="icon2" class="col text-end icon" @click="openCart()">
-        <i class="bi bi-cart fs-1"></i>
-      </a>
+      <div class="col d-flex justify-content-end">
+        <button
+          type="button"
+          class="btn btn-outline-success fs-3"
+          @click="openCart()"
+        >
+          🛒
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -24,13 +30,4 @@ export default {
 };
 </script>
 
-<style scoped>
-.icon {
-  cursor: pointer;
-  color: #4fc6a6;
-}
-
-.icon:hover {
-  color: #2c5858;
-}
-</style>
+<style scoped></style>

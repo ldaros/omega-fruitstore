@@ -1,6 +1,6 @@
 <template>
   <transition name="bounce">
-    <div v-show="open" class="container sidenav">
+    <div v-show="open" class="container sidenav shadow">
       <div class="d-flex justify-content-end my-3 px-1">
         <button
           type="button"
