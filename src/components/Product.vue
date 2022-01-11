@@ -4,7 +4,7 @@
       <div class="d-flex justify-content-end w-100 p-2">
         <button
           type="button"
-          class="btn btn-primary"
+          class="btn btn-primary add-to-cart"
           @click="sendItem(product)"
         >
           +
@@ -35,7 +35,6 @@ export default {
   methods: {
     sendItem(product) {
       this.$emit("onAdd", product);
-      console.log("Adding " + product.name + " to cart");
     },
   },
 };

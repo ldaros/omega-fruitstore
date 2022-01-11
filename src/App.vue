@@ -80,22 +80,18 @@ export default {
   methods: {
     captureCart() {
       this.cart.open = !this.cart.open;
-      console.log("cartOpen: " + this.cart.open);
     },
     addItem(item) {
       this.cart.items.push(item);
-      console.log(this.cart.items);
     },
     removeItem(item) {
       this.cart.items.splice(this.cart.items.indexOf(item), 1);
-      console.log(this.cart.items);
     },
-
     calcTotal() {
       let total = 0;
-      for (let i = 0; i < this.cart.items.length; i++) {
-        total += this.cart.items[i].price;
-      }
+      this.cart.items.forEach((item) => {
+        total += item.price;
+      });
       return total;
     },
   },

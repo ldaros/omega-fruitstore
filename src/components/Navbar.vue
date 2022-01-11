@@ -5,7 +5,7 @@
         <button type="button" class="btn btn-outline-success fs-3">📖</button>
       </div>
 
-      <div class="col d-flex justify-content-end">
+      <div class="col d-flex justify-content-end" id="cart-open">
         <button
           type="button"
           class="btn btn-outline-success fs-3"
