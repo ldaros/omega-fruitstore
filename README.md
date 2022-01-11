@@ -1,24 +1,7 @@
-# vue-ecomerce
+## See it here:
 
-## Project setup
-```
-yarn install
-```
+<div align="center">
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
+[![Acessar Página](https://img.shields.io/badge/View_site-GH_Pages-2ea44f?style=for-the-badge)](https://ldaros.github.io/vue-ecomerce/)
 
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+</div>
