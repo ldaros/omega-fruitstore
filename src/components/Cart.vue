@@ -1,30 +1,34 @@
 <template>
   <transition name="bounce">
-    <div v-show="open" id="mySidenav" class="sidenav">
-      <div class="icon-container">
-        <a @click="closeCart()" class="icon">
-          <Icon icon="akar-icons:cart" />
-        </a>
+    <div v-show="open" class="container sidenav">
+      <div class="d-flex justify-content-end my-3 px-1">
+        <button
+          type="button"
+          class="btn btn-danger justify-end"
+          @click="closeCart"
+        >
+          X
+        </button>
       </div>
 
-      <div class="cart-list-container">
-        <cartItem
-          v-for="item in items"
-          :key="item.id + 100"
-          :displayItem="item"
-        />
-      </div>
+      <h2>Total: ${{ total.toFixed(2) }}</h2>
+
+      <cartItem
+        v-for="item in items"
+        :key="item.id + 100"
+        :displayItem="item"
+        @onRemove="$emit('onRemove', item)"
+      />
     </div>
   </transition>
 </template>
 
 <script>
-import { Icon } from "@iconify/vue";
 import cartItem from "./cartItem.vue";
 
 export default {
   name: "Cart",
-  components: { Icon, cartItem },
+  components: { cartItem },
 
   props: {
     open: {
@@ -34,6 +38,10 @@ export default {
     items: {
       type: Array,
       default: () => [],
+    },
+    total: {
+      type: Number,
+      default: 0,
     },
   },
 
@@ -56,8 +64,16 @@ export default {
   top: 0;
   right: 0;
 
-  background-color: #f3f3f3;
+  background-color: #ffffff;
   overflow-x: hidden;
+}
+
+@media screen and (min-height: 450px) {
+  .sidenav {
+    max-width: 500px;
+
+    border-left: 1px solid #e5e5e5;
+  }
 }
 
 .bounce-enter-active {
@@ -71,36 +87,5 @@ export default {
   0% {
     transform: translateX(100%);
   }
-}
-
-.icon-container {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  padding: 0.5rem;
-  margin-top: 2rem;
-  margin-right: 1rem;
-}
-
-.icon {
-  width: 2rem;
-  height: 2rem;
-  cursor: pointer;
-
-  color: #d4311b;
-}
-
-.icon svg {
-  width: 100%;
-  height: 100%;
-}
-
-.cart-list-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem;
-  gap: 0.8rem;
 }
 </style>

@@ -1,19 +1,20 @@
 <template>
-  <div id="nav-container">
-    <div id="icon1" class="icon"><Icon icon="bi:text-left" /></div>
+  <div class="container">
+    <div class="row">
+      <a id="icon1" class="col">
+        <i class="bi bi-list fs-1 icon"></i>
+      </a>
 
-    <div id="icon2" class="icon" @click="openCart()">
-      <Icon icon="akar-icons:cart" />
+      <a id="icon2" class="col text-end icon" @click="openCart()">
+        <i class="bi bi-cart fs-1"></i>
+      </a>
     </div>
   </div>
 </template>
 
 <script>
-import { Icon } from "@iconify/vue";
-
 export default {
   name: "Nav",
-  components: { Icon },
 
   methods: {
     openCart() {
@@ -24,25 +25,12 @@ export default {
 </script>
 
 <style scoped>
-#nav-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.5rem;
-
-  margin-top: 1rem;
-}
-
 .icon {
-  width: 2rem;
-  height: 2rem;
   cursor: pointer;
-
   color: #4fc6a6;
 }
 
-.icon svg {
-  width: 100%;
-  height: 100%;
+.icon:hover {
+  color: #2c5858;
 }
 </style>

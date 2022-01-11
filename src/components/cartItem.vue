@@ -1,8 +1,32 @@
 <template>
-  <div class="cart-item">
-    <img class="product-image" :src="displayItem.image" />
-    <h3 class="product-name">{{ displayItem.name }}</h3>
-    <p class="product-price">{{ displayItem.price }}</p>
+  <div class="card mb-2">
+    <div class="row g-0">
+      <div class="col-4">
+        <img
+          :src="displayItem.image"
+          class="img-fluid rounded-start"
+          alt="..."
+        />
+      </div>
+      <div class="col-8">
+        <div class="card-body">
+          <h5 class="card-title">{{ displayItem.name }}</h5>
+          <p class="card-text text-end fs-5 fw-bold">
+            ${{ displayItem.price }}
+          </p>
+
+          <div class="d-flex justify-content-end">
+            <button
+              type="button"
+              class="btn btn-outline-danger btn-sm justify-end"
+              @click="$emit('onRemove', displayItem)"
+            >
+              Remove
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -16,21 +40,8 @@ export default {
 </script>
 
 <style scoped>
-.cart-item {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  border: 1px solid #4fc6a6;
-  border-radius: 18px;
-
-  height: 8rem;
-}
-
 img {
-  align-self: center;
-  justify-self: center;
-  height: 50%;
-  width: auto;
-
-  grid-row: span 2;
+  width: 80%;
+  height: auto;
 }
 </style>

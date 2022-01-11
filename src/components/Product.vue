@@ -1,22 +1,31 @@
 <template>
-  <div class="product-container">
-    <a class="add-to-cart" @click="sendItem(product)">
-      <Icon icon="carbon:add-alt" />
-    </a>
+  <div class="col-6 col-lg-3 col-md-4">
+    <div class="card d-flex flex-column align-items-center mb-2 c-shadow">
+      <i
+        class="bi bi-plus-circle fs-2 w-100 text-end px-2 icon"
+        @click="sendItem(product)"
+      ></i>
 
-    <img :src="product.image" :alt="product.name" />
-    <h3>{{ product.name }}</h3>
-    <p class="product-price">{{ product.price }}</p>
-    <p class="product-weight">{{ product.weight }}</p>
+      <div class="card-img d-flex justify-content-center">
+        <img :src="product.image" :alt="product.name" />
+      </div>
+      <div class="card-body w-100">
+        <div class="product-name fs-5">{{ product.name }}</div>
+
+        <div class="row">
+          <div class="col fw-bold fs-5 align-self-end">
+            ${{ product.price }}
+          </div>
+          <div class="col text-end align-self-end">{{ product.weight }}Kg</div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import { Icon } from "@iconify/vue";
-
 export default {
   name: "Product",
-  components: { Icon },
   props: { product: Object },
   methods: {
     sendItem(product) {
@@ -28,61 +37,22 @@ export default {
 </script>
 
 <style scoped>
-.product-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-
-  border: 1px solid #4fc6a6;
-  border-radius: 18px;
-
-  padding: 0.8rem;
+img {
+  width: 80%;
+  height: auto;
 }
 
-.add-to-cart {
-  grid-column: span 2;
-  justify-self: end;
-  align-self: center;
-  color: #303030;
+.icon {
+  cursor: pointer;
+  color: #969696;
 }
 
-.add-to-cart svg {
-  width: 2rem;
-  height: 2rem;
+.icon:hover {
+  color: #2c5858;
 }
 
-.product-container img {
-  grid-column: span 2;
-
-  align-self: center;
-  justify-self: center;
-
-  height: 100%;
-  width: auto;
-}
-.product-container h3 {
-  grid-column: span 2;
-  margin: 0;
-  padding: 0;
-}
-
-.product-price::before {
-  content: "$";
-}
-.product-price {
-  font-weight: bold;
-  font-size: 1.1rem;
-  align-self: end;
-  padding: 0;
-}
-
-.product-weight {
-  font-size: 0.9rem;
-  color: #363636;
-  align-self: end;
-  justify-self: end;
-  padding: 0;
-}
-.product-weight::after {
-  content: "kg";
+.c-shadow {
+  -webkit-box-shadow: 0px 0px 5px 0px #2e70ff;
+  box-shadow: 0px 0px 5px 0px #2e70ff;
 }
 </style>
