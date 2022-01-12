@@ -1,4 +1,4 @@
 module.exports = {
-  publicPath: '/vue-ecomerce/'
+  publicPath: '/omega-fruitstore/'
 }
   
