@@ -2,6 +2,6 @@
 
 <div align="center">
 
-[![Acessar Página](https://img.shields.io/badge/View_site-GH_Pages-2ea44f?style=for-the-badge)](https://ldaros.github.io/vue-ecomerce/)
+[![Acessar Página](https://img.shields.io/badge/View_site-GH_Pages-2ea44f?style=for-the-badge)](https://ldaros.github.io/omega-fruitstore/)
 
 </div>
