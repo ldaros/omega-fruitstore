@@ -1,27 +1,26 @@
 <template>
-  <div class="col-6 col-lg-3 col-md-4">
-    <div class="card d-flex flex-column align-items-center mb-2 shadow">
-      <div class="d-flex justify-content-end w-100 p-2">
-        <button
-          type="button"
-          class="btn btn-primary add-to-cart"
-          @click="sendItem(product)"
-        >
-          +
-        </button>
-      </div>
+  <div class="col-6 col-lg-3 col-md-4 mb-2">
+    <div class="card p-2">
+      <button
+        id="add-to-cart"
+        class="btn btn-primary align-self-end"
+        @click="sendItem(product)"
+      >
+        +
+      </button>
 
-      <div class="card-img d-flex justify-content-center">
-        <img :src="product.image" :alt="product.name" class="w-75" />
-      </div>
-      <div class="card-body w-100">
-        <div class="product-name fs-5">{{ product.name }}</div>
+      <div class="big align-self-center">{{ product.image }}</div>
 
-        <div class="row">
-          <div class="col fw-bold fs-5 align-self-end" id="prod-price">
+      <div class="card-body">
+        <h4 class="fs-5 card-title">{{ product.name }}</h4>
+
+        <div class="row card-text">
+          <span class="col fw-bold fs-5 align-self-end" id="prod-price">
             ${{ product.price }}
-          </div>
-          <div class="col text-end align-self-end">{{ product.weight }}Kg</div>
+          </span>
+          <span class="col text-end align-self-end"
+            >{{ product.weight }}Kg</span
+          >
         </div>
       </div>
     </div>
@@ -30,7 +29,7 @@
 
 <script>
 export default {
-  name: "Product",
+  name: "product",
   props: { product: Object },
   methods: {
     sendItem(product) {
@@ -40,4 +39,14 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.big {
+  font-size: 8em;
+}
+
+@media screen and (max-width: 768px) {
+  .big {
+    font-size: 5em;
+  }
+}
+</style>
