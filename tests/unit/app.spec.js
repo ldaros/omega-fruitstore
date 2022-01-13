@@ -6,7 +6,7 @@ const data = {
   name: "TESTNAME1",
   price: 69.69,
   weight: "1",
-  image: "...",
+  image: "🍊",
   id: 101,
 };
 
@@ -16,22 +16,21 @@ test("Pressing plus button adds item to cart", async () => {
 
   // set data
   await wrapper.setData({
-    cart: {
-      open: false,
-      items: [],
-    },
+    rightNav: false,
+
+    cartItems: [],
 
     products: [data],
   });
 
   // Find the plus button
-  const plusButton = wrapper.find(".add-to-cart");
+  const plusButton = wrapper.find("#add-to-cart");
 
   // Click the plus button
   plusButton.trigger("click");
 
   // expect the cart to have one item
-  expect(wrapper.vm.cart.items.length).toBe(1);
+  expect(wrapper.vm.cartItems.length).toBe(1);
 });
 
 test("calcTotal function returns correct total", async () => {
@@ -39,14 +38,12 @@ test("calcTotal function returns correct total", async () => {
 
   // set data
   wrapper.setData({
-    cart: {
-      items: [data, data],
-    },
+    cartItems: [data, data],
   });
 
   // get the total
-  const total = wrapper.vm.calcTotal();
+  const total = wrapper.vm.cartCalcTotal();
 
   // expect the total to be correct
-  expect(total).toBe(69.69 * 2);
+  expect(total).toBe((data.price * 2).toFixed(2));
 });

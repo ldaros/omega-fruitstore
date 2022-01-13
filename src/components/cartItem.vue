@@ -1,30 +1,20 @@
 <template>
   <div class="card mb-2">
-    <div class="row g-0">
-      <div class="col-4">
-        <img
-          :src="displayItem.image"
-          class="img-fluid rounded-start"
-          alt="..."
-        />
+    <div class="row g-0 align-items-center">
+      <div class="col-4 big-text text-center">
+        {{ displayItem.image }}
       </div>
-      <div class="col-8">
-        <div class="card-body">
-          <h5 class="card-title">{{ displayItem.name }}</h5>
-          <p class="card-text text-end fs-5 fw-bold">
-            ${{ displayItem.price }}
-          </p>
 
-          <div class="d-flex justify-content-end">
-            <button
-              type="button"
-              class="btn btn-outline-danger btn-sm justify-end"
-              @click="$emit('onRemove', displayItem)"
-            >
-              Remove
-            </button>
-          </div>
-        </div>
+      <div class="col-8 card-body">
+        <h5 class="card-title">{{ displayItem.name }}</h5>
+        <p class="card-text fs-5 fw-bold">${{ displayItem.price }}</p>
+
+        <button
+          class="btn btn-outline-danger btn-sm"
+          @click="$emit('onRemove', displayItem)"
+        >
+          Remove
+        </button>
       </div>
     </div>
   </div>
@@ -40,8 +30,7 @@ export default {
 </script>
 
 <style scoped>
-img {
-  width: 80%;
-  height: auto;
+.big-text {
+  font-size: 5rem;
 }
 </style>

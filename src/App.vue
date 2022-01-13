@@ -1,111 +1,121 @@
 <template>
-  <Nav @openCart="captureCart" />
-  <Header />
+  <!-- Navigation -->
+  <nav class="container navbar navbar-light">
+    <button
+      type="button"
+      class="btn btn-outline-success fs-3"
+      @click="toggleLeftNav"
+      id="nav-left-open"
+    >
+      📖
+    </button>
+
+    <h1 class="navbar-brand fs-3">🍆 Fruit 🍆</h1>
+
+    <button
+      type="button"
+      class="btn btn-outline-success fs-3"
+      @click="toggleRightNav"
+      id="nav-right-open"
+    >
+      🛒
+    </button>
+  </nav>
 
   <!-- Product List -->
   <div class="container">
+    <h1 class="fs-1 my-3 mb-4">Buy fresh fruits and vegetables</h1>
+    <hr data-v-0f355728="" />
+
     <div class="row">
-      <Product
+      <product
         v-for="product in products"
         :key="product.id"
         :product="product"
-        @onAdd="addItem"
+        @onAdd="cartAddItem"
       />
     </div>
   </div>
 
-  <!-- Sidenav -->
-  <Cart
-    :open="cart.open"
-    :items="cart.items"
-    :total="calcTotal()"
-    @closeCart="captureCart"
-    @onRemove="removeItem"
-  />
+  <!-- Left side nav -->
+  <sideNav title="Info 📖" :open="leftNav" @closeSelf="toggleLeftNav">
+    <h4 class="fs-3 text-center">🍆 Fruit 🍆</h4>
+
+    <p class="fs-5 text-center">
+      omega-3-rich, high-quality fruits, fresh from the farm, with a delicious
+      taste.
+    </p>
+
+    <p class="fs-light text-center">
+      <strong>Fruit</strong> is a project by
+      <a href="https://github.com/ldaros" target="_blank"> @ldaros </a>
+    </p>
+  </sideNav>
+
+  <!-- Right side nav -->
+  <sideNav
+    title="🛒 Shopping Cart"
+    :flip="true"
+    :open="rightNav"
+    @closeSelf="toggleRightNav"
+  >
+    <cartItem
+      v-for="item in cartItems"
+      :key="item.id + 100"
+      :displayItem="item"
+      @onRemove="cartRemItem(item)"
+    />
+
+    <p class="fs-3 mt-3">💵 Total: ${{ cartCalcTotal() }}</p>
+  </sideNav>
 </template>
 
 <script>
-import Nav from "./components/Navbar.vue";
-import Header from "./components/Header.vue";
-import Product from "./components/Product.vue";
-import Cart from "./components/Cart.vue";
+import product from "./components/product.vue";
+import sideNav from "./components/sideNav.vue";
+import cartItem from "./components/cartItem.vue";
 
-import banana_img from "./assets/banana.png";
-import apple_img from "./assets/apple.png";
-import orange_img from "./assets/orange.png";
-import strawberry_img from "./assets/strawberry.png";
+import catalog from "./assets/catalog.json";
 
 export default {
   name: "App",
-  components: { Nav, Header, Product, Cart },
+  components: { product, sideNav, cartItem },
   data() {
     return {
-      cart: {
-        open: false,
-        items: [],
-      },
-      products: [
-        {
-          name: "Banana",
-          price: 3.74,
-          weight: "1",
-          image: banana_img,
-          id: 101,
-        },
-        {
-          name: "Strawberry",
-          price: 5.99,
-          weight: "1",
-          image: strawberry_img,
-          id: 102,
-        },
-        {
-          name: "Orange",
-          price: 2.99,
-          weight: "1",
-          image: orange_img,
-          id: 103,
-        },
-        {
-          name: "Apple",
-          price: 4.25,
-          weight: "1",
-          image: apple_img,
-          id: 104,
-        },
-      ],
+      // products are loaded from a json file
+      products: catalog,
+
+      // Shopping Cart
+      cartItems: [],
+
+      // Controls opening and closing of side navs
+      leftNav: false,
+      rightNav: false,
     };
   },
 
   methods: {
-    captureCart() {
-      this.cart.open = !this.cart.open;
+    toggleRightNav() {
+      this.rightNav = !this.rightNav;
     },
-    addItem(item) {
-      this.cart.items.push(item);
+    toggleLeftNav() {
+      this.leftNav = !this.leftNav;
     },
-    removeItem(item) {
-      this.cart.items.splice(this.cart.items.indexOf(item), 1);
+    cartAddItem(item) {
+      this.cartItems.push(item);
     },
-    calcTotal() {
+    cartRemItem(item) {
+      this.cartItems.splice(this.cartItems.indexOf(item), 1);
+    },
+    cartCalcTotal() {
       let total = 0;
-      this.cart.items.forEach((item) => {
+      this.cartItems.forEach((item) => {
         total += item.price;
       });
-      return total;
+      return total.toFixed(2);
     },
   },
 };
 </script>
 
-<style>
-body {
-  padding: 1em;
-}
-
-@media screen and (max-width: 500px) {
-  body {
-    padding: 1em 0.5em;
-  }
-}
-</style>
+<style></style>

@@ -1,6 +1,6 @@
 // Import the `mount()` method from Vue Test Utils
 import { shallowMount } from "@vue/test-utils";
-import Product from "@/components/Product.vue";
+import product from "@/components/product.vue";
 
 const data = {
   name: "TESTNAME1",
@@ -12,10 +12,10 @@ const data = {
 
 test("Renders product component", async () => {
   // mount() returns a wrapped Vue component we can interact with
-  const wrapper = shallowMount(Product, { propsData: { product: data } });
+  const wrapper = shallowMount(product, { propsData: { product: data } });
 
   // Find the product name using class name
-  const productName = wrapper.find(".product-name");
+  const productName = wrapper.find(".card-title");
 
   // Expect the product name to be the same as in data
   expect(productName.text()).toBe(data.name);

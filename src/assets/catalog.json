@@ -1,0 +1,172 @@
+[
+  {
+    "name": "Banana",
+    "price": 3.74,
+    "weight": "1",
+    "image": "🍌",
+    "id": 101
+  },
+  {
+    "name": "Strawberry",
+    "price": 5.99,
+    "weight": "1",
+    "image": "🍓",
+    "id": 102
+  },
+  {
+    "name": "Orange",
+    "price": 2.99,
+    "weight": "1",
+    "image": "🍊",
+    "id": 103
+  },
+  {
+    "name": "Apple",
+    "price": 4.25,
+    "weight": "1",
+    "image": "🍎",
+    "id": 104
+  },
+  {
+    "name": "Lemon",
+    "price": 1.99,
+    "weight": "1",
+    "image": "🍋",
+    "id": 105
+  },
+  {
+    "name": "Grape",
+    "price": 2.99,
+    "weight": "1",
+    "image": "🍇",
+    "id": 107
+  },
+  {
+    "name": "Watermelon",
+    "price": 5.99,
+    "weight": "1",
+    "image": "🍉",
+    "id": 108
+  },
+  {
+    "name": "Pear",
+    "price": 3.25,
+    "weight": "1",
+    "image": "🍐",
+    "id": 109
+  },
+  {
+    "name": "Pineapple",
+    "price": 5.99,
+    "weight": "1",
+    "image": "🍍",
+    "id": 110
+  },
+  {
+    "name": "Coconut",
+    "price": 3.99,
+    "weight": "1",
+    "image": "🥥",
+    "id": 111
+  },
+  {
+    "name": "Avocado",
+    "price": 4.00,
+    "weight": "1",
+    "image": "🥑",
+    "id": 112
+  },
+  {
+    "name": "Tomato",
+    "price": 2.92,
+    "weight": "1",
+    "image": "🍅",
+    "id": 113
+  },
+  {
+    "name": "Cucumber",
+    "price": 2.50,
+    "weight": "1",
+    "image": "🥒",
+    "id": 114
+  },
+  {
+    "name": "Onion",
+    "price": 2.99,
+    "weight": "1",
+    "image": "🧅",
+    "id": 115
+  },
+  {
+    "name": "Garlic",
+    "price": 2.99,
+    "weight": "1",
+    "image": "🧄",
+    "id": 116
+  },
+  {
+    "name": "Carrot",
+    "price": 2.99,
+    "weight": "1",
+    "image": "🥕",
+    "id": 118
+  },
+  {
+    "name": "Potato",
+    "price": 2.99,
+    "weight": "1",
+    "image": "🥔",
+    "id": 119
+  },
+  {
+    "name": "Broccoli",
+    "price": 2.99,
+    "weight": "1",
+    "image": "🥦",
+    "id": 120
+  },
+  {
+    "name": "Eggplant",
+    "price": 2.99,
+    "weight": "1",
+    "image": "🍆",
+    "id": 125
+  },
+  {
+    "name": "Pepper",
+    "price": 2.99,
+    "weight": "1",
+    "image": "🌶",
+    "id": 126
+  },
+  {
+    "name": "Cauliflower",
+    "price": 2.99,
+    "weight": "1",
+    "image": "🥬",
+    "id": 128
+  },
+  {
+    "name": "Cherry",
+    "price": 2.99,
+    "weight": "1",
+    "image": "🍒",
+    "id": 130
+  },
+  {
+    "name": "Mango",
+    "price": 2.99,
+    "weight": "1",
+    "image": "🥭",
+    "id": 135
+  },
+  {
+    "name": "Egg",
+    "price": 2.99,
+    "weight": "1",
+    "image": "🥚",
+    "id": 131
+  }
+
+
+]
