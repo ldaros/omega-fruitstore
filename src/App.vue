@@ -71,7 +71,7 @@
 </template>
 
 <script>
-import product from "./components/product.vue";
+import product from "./components/Product.vue";
 import sideNav from "./components/sideNav.vue";
 import cartItem from "./components/cartItem.vue";
 

@@ -1,6 +1,6 @@
 // Import the `mount()` method from Vue Test Utils
 import { shallowMount } from "@vue/test-utils";
-import product from "@/components/product.vue";
+import product from "@/components/Product.vue";
 
 const data = {
   name: "TESTNAME1",
