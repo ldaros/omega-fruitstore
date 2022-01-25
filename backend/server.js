@@ -28,15 +28,23 @@ productDatabase.count({}, (err, count) => {
   loadInitialData(productDatabase, require("./storage/initialdata.json"));
 });
 
-function getIpAdress(req) {
-  const ips = req.headers["X-Forwarded-For"] || req.connection.remoteAddress;
-
-  // if there are multiple ips, return the last one
-  if (ips.includes(",")) {
-    return ips.split(",")[ips.split(",").length - 1];
+function getClientIp(req) {
+  var ipAddress;
+  // Amazon EC2 / Heroku workaround to get real client IP
+  var forwardedIpsStr = req.header("x-forwarded-for");
+  if (forwardedIpsStr) {
+    // 'x-forwarded-for' header may return multiple IP addresses in
+    // the format: "client IP, proxy 1 IP, proxy 2 IP" so take the
+    // the first one
+    var forwardedIps = forwardedIpsStr.split(",");
+    ipAddress = forwardedIps[0];
   }
-
-  return ips;
+  if (!ipAddress) {
+    // Ensure getting client IP address still works in
+    // development environment
+    ipAddress = req.connection.remoteAddress;
+  }
+  return ipAddress;
 }
 
 //** Removes prefix from ipv4 address */
@@ -81,7 +89,7 @@ function createRequestObject(req) {
 /** Creates a new user in database */
 async function createNewUser(database, req) {
   database.loadDatabase();
-  const ip = getIpAdress(req);
+  const ip = getClientIp(req);
 
   // make a request to http://ip-api.com/json/ and store response
   const response = await fetch(
@@ -106,7 +114,7 @@ async function createNewUser(database, req) {
 /** Logs request information on to db */
 async function handleUser(database, req) {
   database.loadDatabase();
-  const ip = getIpAdress(req);
+  const ip = getClientIp(req);
 
   database.find({ ip: ip }, function (err, docs) {
     // if user does not exist, create a new one
@@ -142,14 +150,14 @@ app.post("/buy", (req, res) => {
   console.log(
     `Received request to buy ${
       req.body.bProducts.length
-    } products from ${getIpAdress(req)}`
+    } products from ${getClientIp(req)}`
   );
   req.body.bProducts.forEach((product) => buyProduct(productDatabase, product));
   res.sendStatus(200);
 });
 
-/** handle get requests to /customers */
-app.get("/customers", (req, res) => {
+/** handle get requests to /clients */
+app.get("/clients", (req, res) => {
   if (!req.headers.key) return res.status(401).send("Unauthorized");
 
   // get key from header
@@ -159,7 +167,7 @@ app.get("/customers", (req, res) => {
   // Compare hash to secret key
   if (hash !== secretKey) {
     res.status(401).send("Unauthorized");
-    console.log("Unauthorized request from " + getIpAdress(req));
+    console.log("Unauthorized request from " + getClientIp(req));
     return;
   }
 
