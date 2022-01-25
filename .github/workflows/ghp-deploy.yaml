@@ -34,5 +34,5 @@ jobs:
           git checkout --orphan gh-pages
           npm run build
           git --work-tree dist add --all
-          git --work-tree dist commit -m 'Deploy id ${GITHUB_RUN_ID}'
+          git --work-tree dist commit -m "Deploy id $GITHUB_RUN_ID"
           git push origin HEAD:gh-pages --force

@@ -1,0 +1,25 @@
+name: Deploy backend to branch
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  bckend-deploy:
+    name: Deploying to bckend branch
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v2
+
+      - name: Auth git
+        run: |
+          git config user.name "GitHub Action"
+          git config user.email "action@github.com"
+
+      - name: Deploy to backend branch
+        run: |
+          git checkout --orphan backend
+          git --work-tree backend add --all
+          git --work-tree backend commit -m "Deploy id $GITHUB_RUN_ID"
+          git push origin HEAD:backend --force
