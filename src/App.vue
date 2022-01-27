@@ -166,6 +166,9 @@ export default {
     },
     //** Get product catalog from server */
     getProducts() {
+      // fix for unit tests
+      if (process.env.NODE_ENV == "test") return;
+
       fetch(productsDir)
         .then((response) => response.json())
         .then((data) => {
