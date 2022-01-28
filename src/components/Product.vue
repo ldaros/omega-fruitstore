@@ -12,14 +12,17 @@
       <div class="big align-self-center">{{ product.image }}</div>
 
       <div class="card-body">
-        <h4 class="fs-5 card-title">{{ product.name }}</h4>
+        <div class="row">
+          <h4 class="col fs-5 card-title">{{ product.name }}</h4>
+          <span class="col text-end">{{ product.weight }}Kg</span>
+        </div>
 
         <div class="row card-text">
           <span class="col fw-bold fs-5 align-self-end" id="prod-price">
             ${{ product.price }}
           </span>
-          <span class="col text-end align-self-end"
-            >{{ product.weight }}Kg</span
+          <span class="col text-end align-self-end small">
+            {{ product.stock }} units left</span
           >
         </div>
       </div>
@@ -42,6 +45,10 @@ export default {
 <style scoped>
 .big {
   font-size: 8em;
+}
+
+.small {
+  font-size: 0.8em;
 }
 
 @media screen and (max-width: 768px) {
